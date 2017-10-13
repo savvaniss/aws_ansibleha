@@ -1,0 +1,10 @@
+---
+ - hosts: local
+   connection: local
+   gather_facts: no
+   vars_files:
+     - aws/vars/vpc.yml
+   tasks:
+     - import_tasks: aws/tasks/vpc.yml
+
+
