@@ -1,0 +1,42 @@
+---
+
+
+ - name: VCP | debug info
+   debug:
+     var: "web_security_rules"
+
+ - name: WebServer | Create WEB Security Group
+   ec2_group:
+     name: "{{  web_security_groups[0].sg_name }}"
+     description: "{{ web_security_groups[0].sg_description }}"
+     region: "{{ vpc_region }}" # Change the AWS region here
+     vpc_id: "{{ vpc.vpc.id }}" # vpc is the resgister name, you can also set it manually
+     state: present
+     rules:
+        - proto: "{{ web_security_rules.rule1.proto }}"
+          from_port: "{{ web_security_rules.rule1.from_port }}"
+          to_port: "{{ web_security_rules.rule1.to_port }}"
+          cidr_ip: "{{ web_security_rules.rule1.cidr_ip }}"
+        - proto: "{{ web_security_rules.rule2.proto }}"
+          from_port: "{{ web_security_rules.rule2.from_port }}"
+          to_port: "{{ web_security_rules.rule2.to_port }}"
+          cidr_ip: "{{ web_security_rules.rule2.cidr_ip }}"
+        - proto: "{{ web_security_rules.rule3.proto }}"
+          from_port: "{{ web_security_rules.rule3.from_port }}"
+          to_port: "{{ web_security_rules.rule3.to_port }}"
+          cidr_ip: "{{ web_security_rules.rule3.cidr_ip }}"
+   register: web_sg
+
+ - debug:
+     var: "web_sg"
+
+
+ - name: WebServer | Tag the WEB Security Group with a name
+   local_action:
+     module: ec2_tag
+     resource: "{{ web_sg.group_id }}"
+     region: "{{ vpc_region }}"
+     state: present
+     tags:
+       Name: "{{ vpc_name }}-{{ web_sg.group_name }}"
+

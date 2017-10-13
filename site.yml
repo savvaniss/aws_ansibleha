@@ -5,8 +5,9 @@
    vars_files:
      - aws/vars/vpc.yml
      - aws/vars/ec2_key.yml
+     - aws/vars/ec2.yml
    tasks:
      - import_tasks: aws/tasks/vpc.yml
      - import_tasks: aws/tasks/ec2_key.yml
-
+     - import_tasks: aws/tasks/ec2.yml
 
