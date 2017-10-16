@@ -1,0 +1,4 @@
+db_hostname: mydb.cvgou0cx8ziq.eu-west-1.rds.amazonaws.com
+db_name: prodmysql
+db_username: admin
+db_password: password

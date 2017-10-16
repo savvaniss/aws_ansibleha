@@ -7,8 +7,11 @@
  public_az_1: "{{ vpc_region }}a"
  public_cidr_2: 172.25.20.0/24
  public_az_2: "{{ vpc_region }}b"
- private_cidr: 172.25.30.0/24
- private_az: "{{ vpc_region }}c"
+ private_cidr_1: 172.25.30.0/24
+ private_az_1: "{{ vpc_region }}c"
+ private_cidr_2: 172.25.40.0/24
+ private_az_2: "{{ vpc_region }}a"
+
 
  # Please don't change the variables below, until you know what you are doing
  #
@@ -20,9 +23,13 @@
    - cidr: "{{ public_cidr_2 }}" # Public Subnet-2
      az: "{{ public_az_2 }}"
      resource_tags: { "Name":"{{ vpc_name }}-{{ public_az_2 }}-public-subnet" }
-   - cidr: "{{ private_cidr }}" # Private Subnet
-     az: "{{ private_az }}"
-     resource_tags: { "Name":"{{ vpc_name }}-{{ private_az }}-private-subnet" }
+   - cidr: "{{ private_cidr_1 }}" # Private Subnet
+     az: "{{ private_az_1 }}"
+     resource_tags: { "Name":"{{ vpc_name }}-{{ private_az_1 }}-private-subnet" }
+   - cidr: "{{ private_cidr_2 }}" # Private Subnet
+     az: "{{ private_az_2 }}"
+     resource_tags: { "Name":"{{ vpc_name }}-{{ private_az_2 }}-private-subnet" }
+
 
  # Route table(s) for Subnets inside the VPC
  #
