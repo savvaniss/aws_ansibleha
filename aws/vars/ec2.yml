@@ -24,7 +24,7 @@
       from_port: 22
       to_port: 22
       cidr_ip: 0.0.0.0/0
-   rule2:  
+   rule2:
       proto: tcp
       from_port: 80
       to_port: 80
@@ -38,9 +38,14 @@
  # Please don't change the variables below, until you know what you are doing
  # Only Ubuntu distribution is supported
 
+ ENV: production
  linux_distribution: ubuntu
  ubuntu_release: trusty
  ami_store: ebs
  virutalization_type: hvm
  cpu_architecture: amd64
+ application: web-server
+ server_role: web-server
+ web_instance_type: t2.micro
+
 
