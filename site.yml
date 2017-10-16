@@ -7,10 +7,13 @@
      - aws/vars/ec2_key.yml
      - aws/vars/ec2.yml
      - aws/vars/rds.yml
+     - aws/vars/elb.yml
+
 
    tasks:
      - import_tasks: aws/tasks/vpc.yml
      - import_tasks: aws/tasks/ec2_key.yml
-     #- import_tasks: aws/tasks/ec2.yml
+     - import_tasks: aws/tasks/ec2.yml
      - import_tasks: aws/tasks/rds.yml
+     - import_tasks: aws/tasks/elb.yml
 
